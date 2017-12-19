@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import 'rxjs/add/operator/filter';
+import {of} from 'rxjs/observable/of';
 
 @Component({
   selector: 'app-content',
@@ -6,8 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
+  pageTitle = '';
+  pageDesc = '';
 
-  constructor() { }
+  constructor(public router: Router) {
+    router.events.filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        if (event.url === '/dashboard') {
+          this.pageTitle = '这里是首页';
+          this.pageDesc = '';
+        } else if (event.url.startsWith('/stock')) {
+          this.pageTitle = '股票信息管理';
+          this.pageDesc = '进行股票基本信息增删改查';
+        }
+      });
+  }
 
   ngOnInit() {
   }
