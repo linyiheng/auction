@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { StockFormComponent } from './stock/stock-form/stock-form.component';
+import {StockService} from './stock/stock.service';
 
 const routerConfig: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -42,7 +43,7 @@ const routerConfig: Routes = [
     FormsModule,
     RouterModule.forRoot(routerConfig)
   ],
-  providers: [],
+  providers: [StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
