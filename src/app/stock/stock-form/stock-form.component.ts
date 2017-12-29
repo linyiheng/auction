@@ -11,18 +11,20 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class StockFormComponent implements OnInit {
   stock: Stock;
 
-  constructor(private routeInfo: ActivatedRoute, private stockService: StockService,private router:Router) {
+  constructor(private routeInfo: ActivatedRoute, private stockService: StockService, private router: Router) {
   }
 
   ngOnInit() {
     const stockId = this.routeInfo.snapshot.params['id'];
     this.stock = this.stockService.getStock(stockId);
   }
-  cancel(){
+
+  cancel() {
     this.router.navigateByUrl('/stock');
 
   }
-  save(){
+
+  save() {
     this.router.navigateByUrl('/stock');
   }
 
