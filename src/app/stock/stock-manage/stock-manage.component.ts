@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-stock-manage',
@@ -8,6 +9,8 @@ import {Router} from '@angular/router';
 })
 export class StockManageComponent implements OnInit {
   private stocks: Array<Stock>;
+  private nameFilter: FormControl= new FormControl();
+  private keyword: string;
 
   constructor(public router: Router) {
   }
