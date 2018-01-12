@@ -27,7 +27,7 @@ export class StarsComponent implements OnInit, OnChanges {
     for (let i = 1; i <= 5; i++) {
       this.stars.push(i > this.rating);
     }
-    
+
   }
 
   clickStar(index: number) {
