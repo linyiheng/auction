@@ -1,25 +1,22 @@
 import {Injectable} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import 'rxjs/Rx';
 
 
 @Injectable()
 export class StockService {
 
-  constructor(public http:HttpClientModule) {
+  constructor(public httpClient:HttpClient) {
   }
 
 
-  getStocks(): Stock[] {
-    return this.stocks;
+  getStocks(): Observable<Stock[]> {
+     return this.httpClient.get<Stock[]>('/api/stock');
   }
 
-  getStock(id: number): Stock {
-    //为何三个等于号不可行
-    let stock: Stock = this.stocks.find(stock => stock.id == id);
-    if(!stock){
-      stock=new Stock(0, '', 0, 0, '', []);
-    }
-    return stock;
+  getStock(id: number): Observable<Stock> {
+    return this.httpClient.get<Stock>('/api/stock/'+id);
   }
 
 }

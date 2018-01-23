@@ -22,7 +22,7 @@
         <th>操作</th>
         <!--th style="width: 40px">Label</th-->
       </tr>
-      <tr *ngFor="let stock of stocks | stockFilter:'name':keyword;let i=index;">
+      <tr *ngFor="let stock of stocks | async:keyword;let i=index;">
         <td>{{i+1}}</td>
         <td>{{stock.name}}</td>
         <td>{{stock.price}}</td>
