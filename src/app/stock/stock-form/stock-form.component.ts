@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Stock, StockService} from '../stock.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from '../../../../node_modules/rxjs';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -9,7 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./stock-form.component.css']
 })
 export class StockFormComponent implements OnInit {
-  stock: Stock;
+  formModel: FormGroup;
+  stock: Observable<Stock>;
+  categories=["IT","互联网","金融"];
 
   constructor(private routeInfo: ActivatedRoute, private stockService: StockService, private router: Router) {
   }
@@ -17,6 +21,10 @@ export class StockFormComponent implements OnInit {
   ngOnInit() {
     const stockId = this.routeInfo.snapshot.params['id'];
     this.stock = this.stockService.getStock(stockId);
+    /*let fb=new FormBuilder();
+    this.formModel=fb.group({
+      name:[this.stock.name,[Validators.required,Validators]]
+    })*/
   }
 
   cancel() {

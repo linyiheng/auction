@@ -12,7 +12,7 @@ import {StockManageComponent} from './stock/stock-manage/stock-manage.component'
 import {StarsComponent} from './stars/stars.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http'
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { StockFormComponent } from './stock/stock-form/stock-form.component';
 import {StockService} from './stock/stock.service';
@@ -46,7 +46,8 @@ const routerConfig: Routes = [
     FormsModule,
     RouterModule.forRoot(routerConfig),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [StockService],
   bootstrap: [AppComponent]
